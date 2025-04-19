@@ -1,5 +1,5 @@
 
-<script src="{{ asset('assets/js/admin/app.js') }}"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
 @php 
 $path=Request::path();
 

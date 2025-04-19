@@ -49,7 +49,7 @@ $userinfo=getUserDetail();
 							$menuname=$subli->modulename;
 							$url=$subli->url;
 							$icon=$subli->icon;
-							if($path=='admin/'.$url)
+							if($path=='/'.$url)
 							{
 								$active='active';
 								$isactive='active';
@@ -63,7 +63,7 @@ $userinfo=getUserDetail();
 							{
 								$active='';
 							}
-							$html .= '<li class="sidebar-item '.$active.'"><a class="sidebar-link" href="'.url('/admin/'.$url).'">'.$menuname.'</a></li>';
+							$html .= '<li class="sidebar-item '.$active.'"><a class="sidebar-link" href="'.url('/'.$url).'">'.$menuname.'</a></li>';
 						 }
 						@endphp
 
@@ -81,7 +81,7 @@ $userinfo=getUserDetail();
 
 					@else
 					 @php
-							if($path=='admin/'.$li->url)
+							if($path=='/'.$li->url)
 							{
 								$active='active';
 							}
@@ -92,7 +92,7 @@ $userinfo=getUserDetail();
 
 					 @endphp
 					<li class="sidebar-item {{$active}}">
-						<a class="sidebar-link" href="{{url('/admin/'.$li->url)}}">
+						<a class="sidebar-link" href="{{url('/'.$li->url)}}">
 							<i class="align-middle {{$li->icon}}" ></i> <span class="align-middle">{{$li->modulename}}</span>
 						</a>
 					</li>
@@ -133,9 +133,9 @@ $userinfo=getUserDetail();
 								{{$userinfo->fname.' '.$userinfo->lname}}
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="{{url('/admin/changepassword')}}"><i class="align-middle me-1" data-feather="key"></i> Change Pasword</a>
+								<a class="dropdown-item" href="{{url('/changepassword')}}"><i class="align-middle me-1" data-feather="key"></i> Change Pasword</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="{{url('/admin/logout')}}">Log out</a>
+								<a class="dropdown-item" href="{{url('/logout')}}">Log out</a>
 							</div>
 						</li>
 					</ul>

@@ -14,6 +14,7 @@
 	<title>{{@$title}}</title>
 
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 	<!-- Choose your prefered color scheme -->
 	<!-- <link href="css/light.css" rel="stylesheet"> -->
@@ -22,7 +23,7 @@
 	<!-- BEGIN SETTINGS -->
 	<!-- Remove this after purchasing -->
 	<link class="js-stylesheet" href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-	<!-- <script src="{{ asset('assets/js/admin/settings.js') }}"></script> -->
+	<!-- <script src="{{ asset('assets/js/settings.js') }}"></script> -->
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/js/c.main.js') }}"></script>
 

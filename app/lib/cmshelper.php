@@ -2,8 +2,6 @@
 use Illuminate\Support\Facades\DB;
 // use App\Models\User;
 
-
-
   function testhelper() {
         return 'from helper';
     }
@@ -66,39 +64,37 @@ use Illuminate\Support\Facades\DB;
     }
     function getSideMenu()
     {
-        $userdata=getUserDetail();
-        $menu=DB::select(DB::raw("select m.id,m.modulename,m.url,m.icon
-        from modules m
-         join module_permission mp on m.id=mp.modulesid and parentmoduleid =0
-          where
-         mp.usertypeid =?
-         group by m.id,m.modulename,m.url,m.icon 
-         order by m.orderby"),[$userdata->usertype]);
-        return $menu;
+        $userdata = getUserDetail();
+        $menu = DB::select("
+            SELECT m.id, m.modulename, m.url, m.icon
+            FROM modules m
+            JOIN module_permission mp ON m.id = mp.modulesid AND parentmoduleid = 0
+            WHERE mp.usertypeid = ?
+            GROUP BY m.id, m.modulename, m.url, m.icon 
+            ORDER BY m.orderby
+        ", [$userdata->usertype]);
 
+        return $menu;
     }
     function getSideSubMenu($menuid)
     {
-        $userdata=getUserDetail();
-        $menu=DB::select(DB::raw("select m.id,m.modulename,m.url,m.icon
-        from modules m
-         join module_permission mp on m.id=mp.modulesid
-          where m.parentmoduleid=? and
-         mp.usertypeid =?
-         group by m.id,m.modulename,m.url,m.icon 
-         order by m.orderby"),[$menuid,$userdata->usertype]);
-        return $menu;
+        $userdata = getUserDetail();
+        $menu = DB::select("
+            SELECT m.id, m.modulename, m.url, m.icon
+            FROM modules m
+            JOIN module_permission mp ON m.id = mp.modulesid
+            WHERE m.parentmoduleid = ? AND mp.usertypeid = ?
+            GROUP BY m.id, m.modulename, m.url, m.icon 
+            ORDER BY m.orderby
+        ", [$menuid, $userdata->usertype]);
 
+        return $menu;
     }
 
     function checkmenupermission()
     {
         $userdata=getUserDetail();
-        $path=Request::path();
-
-        
-         $explode=explode('admin/',$path);
-         $url=$explode[1];
+        $url=Request::path();
 
          $notcheck_url=['apply','changepassword'];
          if(in_array($url,$notcheck_url))
